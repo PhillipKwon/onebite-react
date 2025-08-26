@@ -1,0 +1,33 @@
+body {
+  padding: 20px;
+}
+.app {
+  width: 400px;
+  margin: auto;
+}
+.app > section {
+  background-color: rgb(245, 245, 245);
+  border: 1px solid rgb(245, 245, 245);
+  border-radius: 5px;
+  padding: 20px;
+}
+
+section + section {
+  margin-top: 10px;
+}
+
+button {
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  background: blue;
+  color: #ffffff;
+}
+
+button:hover {
+  background: blueviolet;
+}
+
+button + button {
+  margin-left: 10px;
+}
