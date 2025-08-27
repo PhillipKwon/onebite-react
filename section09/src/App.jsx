@@ -1,9 +1,8 @@
-import { useRef, useReducer } from "react";
+import { useRef, useReducer, useCallback, createContext } from "react";
 import "./App.css";
 import Editor from "./components/Editor";
 import Header from "./components/Header";
 import List from "./components/List";
-import { useCallback } from "react";
 
 const mockData = [
   {
@@ -41,9 +40,11 @@ function reducer(state, action) {
   }
 }
 
+// eslint-disable-next-line react-refresh/only-export-components
+export const TodoContext = createContext();
+
 function App() {
   const idRef = useRef(4);
-  // const [todos, setTodos] = useState([...mockData]);
   const [todos, dispatch] = useReducer(reducer, [...mockData]);
 
   const onCreate = useCallback((content) => {
@@ -75,8 +76,17 @@ function App() {
   return (
     <div className="app">
       <Header />
-      <Editor onCreate={onCreate} />
-      <List todos={todos} onUpdate={onUpdate} onDelete={onDelete} />
+      <TodoContext.Provider
+        value={{
+          todos,
+          onCreate,
+          onUpdate,
+          onDelete,
+        }}
+      >
+        <Editor />
+        <List />
+      </TodoContext.Provider>
     </div>
   );
 }
