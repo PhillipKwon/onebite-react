@@ -21,11 +21,4 @@ const TodoItem = ({ id, isDone, content, date, onUpdate, onDelete }) => {
   );
 };
 
-export default memo(TodoItem, (prev, next) => {
-  if (prev.id !== next.id) return false;
-  if (prev.isDone !== next.isDone) return false;
-  if (prev.content !== next.content) return false;
-  if (prev.date !== next.date) return false;
-
-  return true;
-});
+export default memo(TodoItem);

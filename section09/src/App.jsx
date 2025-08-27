@@ -3,6 +3,7 @@ import "./App.css";
 import Editor from "./components/Editor";
 import Header from "./components/Header";
 import List from "./components/List";
+import { useCallback } from "react";
 
 const mockData = [
   {
@@ -45,7 +46,7 @@ function App() {
   // const [todos, setTodos] = useState([...mockData]);
   const [todos, dispatch] = useReducer(reducer, [...mockData]);
 
-  const onCreate = (content) => {
+  const onCreate = useCallback((content) => {
     dispatch({
       type: "Create",
       data: {
@@ -55,21 +56,21 @@ function App() {
         date: new Date().getTime(),
       },
     });
-  };
+  }, []);
 
-  const onUpdate = (targetId) => {
+  const onUpdate = useCallback((targetId) => {
     dispatch({
       type: "Update",
       targetId,
     });
-  };
+  }, []);
 
-  const onDelete = (targetId) => {
+  const onDelete = useCallback((targetId) => {
     dispatch({
       type: "Delete",
       targetId,
     });
-  };
+  }, []);
 
   return (
     <div className="app">
