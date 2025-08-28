@@ -4,7 +4,8 @@ import Home from "./pages/Home";
 import New from "./pages/New";
 import Diary from "./pages/Diary";
 import Notfound from "./pages/Notfound";
-import { getEmotionImage } from "./util/getEmotion";
+import Button from "./components/Button";
+import Header from "./components/Header";
 
 function App() {
   const nav = useNavigate();
@@ -14,12 +15,19 @@ function App() {
   };
   return (
     <>
+      <Header
+        title={"Header"}
+        leftChild={<Button text={"<"} />}
+        rightChild={<Button text={">"} />}
+      />
+      <Button text={"123"} type={"DEFAULT"} />
+      <Button text={"123"} type={"POSITIVE"} />
+      <Button text={"123"} type={"NEGATIVE"} />
       <div>
         <Link to={"/"}>Home</Link>
         <Link to={"/new"}>New</Link>
         <Link to={"/diary"}>Diary</Link>
       </div>
-      <img src={getEmotionImage(1)} />
       <button onClick={onClickButton}>New 페이지로 이동</button>
       <Routes>
         <Route path="/" element={<Home />} />
