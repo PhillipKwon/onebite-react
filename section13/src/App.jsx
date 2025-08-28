@@ -8,28 +8,36 @@ import Diary from "./pages/Diary";
 import Edit from "./pages/Edit";
 import Notfound from "./pages/Notfound";
 
-import Button from "./components/Button";
-import Header from "./components/Header";
-
 const mockData = [
   {
     id: 1,
-    createdDate: new Date().getTime(),
+    createdDate: new Date("2025-08-28").getTime(),
     emotionId: 1,
     content: "1번 일기 내용",
   },
   {
     id: 2,
-    createdDate: new Date().getTime(),
+    createdDate: new Date("2025-07-28").getTime(),
     emotionId: 2,
     content: "2번 일기 내용",
+  },
+  {
+    id: 3,
+    createdDate: new Date("2025-09-28").getTime(),
+    emotionId: 3,
+    content: "3번 일기 내용",
+  },
+  {
+    id: 4,
+    createdDate: new Date("2025-08-27").getTime(),
+    emotionId: 4,
+    content: "4번 일기 내용",
   },
 ];
 
 function reducer(state, action) {
   switch (action.type) {
     case "Create":
-      console.log("Dispatch - Create", action.data);
       return [action.data, ...state];
     case "Update":
       return state.map((item) =>
@@ -43,11 +51,13 @@ function reducer(state, action) {
   return state;
 }
 
-const DiaryContext = createContext();
-const DiaryDispatchContext = createContext();
+// eslint-disable-next-line react-refresh/only-export-components
+export const DiaryContext = createContext();
+// eslint-disable-next-line react-refresh/only-export-components
+export const DiaryDispatchContext = createContext();
 
 function App() {
-  const idRef = useRef(3);
+  const idRef = useRef(5);
   const [data, dispatch] = useReducer(reducer, [...mockData]);
 
   const onCreate = ({ createdDate, emotionId, content }) => {
