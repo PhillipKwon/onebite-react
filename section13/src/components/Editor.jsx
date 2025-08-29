@@ -1,5 +1,5 @@
 import "./Editor.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import EmotionItem from "./EmotionItem";
 import Button from "./Button";
 import { getFormattedDate } from "../util/util";
@@ -13,13 +13,19 @@ const emotionList = [
   { emotionId: 5, emotionName: "끔찍함" },
 ];
 
-const Editor = ({ onSubmit }) => {
+const Editor = ({ initData, onSubmit }) => {
   const nav = useNavigate();
   const [input, setInput] = useState({
     createdDate: new Date(),
     emotionId: 3,
     content: "",
   });
+
+  useEffect(() => {
+    setInput({
+      ...initData,
+    });
+  }, [initData]);
 
   const onChangeInput = (e) => {
     let name = e.target.name;
@@ -73,6 +79,7 @@ const Editor = ({ onSubmit }) => {
           placeholder="오늘은 어땠나요?"
           name="content"
           onChange={onChangeInput}
+          value={input.content}
         />
       </section>
       <section className="button-section">
