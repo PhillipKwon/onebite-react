@@ -4,25 +4,14 @@ import Header from "../components/Header";
 import Button from "../components/Button";
 import Editor from "../components/Editor";
 import { DiaryContext, DiaryDispatchContext } from "../App";
+import useDiary from "../hooks/useDiary";
 
 const Edit = () => {
   const params = useParams();
   const nav = useNavigate();
-  const data = useContext(DiaryContext);
   const { onDelete, onUpdate } = useContext(DiaryDispatchContext);
-  const [curDiaryData, setCurDiaryData] = useState();
 
-  useEffect(() => {
-    const detail = data.find((item) => String(item.id) === String(params.id));
-
-    if (!detail) {
-      alert("존재하지 않는 일기입니다.");
-      nav("/", { replace: true });
-    }
-
-    setCurDiaryData(detail);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [params.id, nav]);
+  const curDiaryData = useDiary(params.id);
 
   const onClickDelete = () => {
     if (confirm("삭제 하시겠습니까?")) {

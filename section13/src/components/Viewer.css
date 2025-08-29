@@ -1,0 +1,60 @@
+.viewer > section {
+  width: 100%;
+  margin-bottom: 100px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.viewer > section > h4 {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.viewer .img-wrapper {
+  width: 250px;
+  height: 250px;
+  border-radius: 5px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  color: #ffffff;
+  font-size: 25px;
+}
+
+.viewer .emotion-img-wrapper-1 {
+  background-color: rgb(100, 201, 100);
+}
+.viewer .emotion-img-wrapper-2 {
+  background-color: rgb(157, 215, 114);
+}
+.viewer .emotion-img-wrapper-3 {
+  background-color: rgb(253, 206, 23);
+}
+.viewer .emotion-img-wrapper-4 {
+  background-color: rgb(253, 132, 70);
+}
+.viewer .emotion-img-wrapper-5 {
+  background-color: rgb(253, 86, 95);
+}
+
+.viewer .content-wrapper {
+  width: 100%;
+  background-color: rgb(236, 236, 236);
+  border-radius: 5px;
+
+  word-break: keep-all;
+  overflow-wrap: break-word;
+}
+
+.viewer .content-wrapper > p {
+  padding: 20px;
+  text-align: left;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 2.5;
+}

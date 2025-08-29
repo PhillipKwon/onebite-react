@@ -2,16 +2,8 @@ import "./Editor.css";
 import { useEffect, useState } from "react";
 import EmotionItem from "./EmotionItem";
 import Button from "./Button";
-import { getFormattedDate } from "../util/util";
+import { emotionList, getFormattedDate } from "../util/util";
 import { useNavigate } from "react-router-dom";
-
-const emotionList = [
-  { emotionId: 1, emotionName: "완전 좋음" },
-  { emotionId: 2, emotionName: "좋음" },
-  { emotionId: 3, emotionName: "그럭저럭" },
-  { emotionId: 4, emotionName: "나쁨" },
-  { emotionId: 5, emotionName: "끔찍함" },
-];
 
 const Editor = ({ initData, onSubmit }) => {
   const nav = useNavigate();
