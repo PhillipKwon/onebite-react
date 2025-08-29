@@ -22,6 +22,7 @@ function getEmotionImage(id) {
 }
 
 function getFormattedDate(targetDate) {
+  if (!targetDate) return "";
   const dateObj = new Date(targetDate);
 
   const year = dateObj.getFullYear();
