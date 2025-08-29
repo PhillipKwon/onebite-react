@@ -1,18 +1,26 @@
 import { useNavigate } from "react-router-dom";
+import { useContext } from "react";
+import { DiaryDispatchContext } from "../App";
 import Button from "../components/Button";
 import Header from "../components/Header";
 import Editor from "../components/Editor";
 
 const New = () => {
   const nav = useNavigate();
+  const { onCreate } = useContext(DiaryDispatchContext);
+
+  const onSubmit = (input) => {
+    onCreate(input);
+    nav("/", { replace: true });
+  };
 
   return (
     <div>
       <Header
         title={"새 일기 쓰기"}
-        leftChild={<Button text={"< 뒤로가기"} onClick={() => nav("/")} />}
+        leftChild={<Button text={"< 뒤로가기"} onClick={() => nav(-1)} />}
       />
-      <Editor />
+      <Editor onSubmit={onSubmit} />
     </div>
   );
 };

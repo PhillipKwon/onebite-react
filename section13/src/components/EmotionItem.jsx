@@ -1,5 +1,5 @@
 import "./EmotionItem.css";
-import { getEmotionImage } from "../util/getEmotion";
+import { getEmotionImage } from "../util/util";
 
 const EmotionItem = ({
   emotionId,
